@@ -7,7 +7,13 @@
 rs-log-analyser --file-path access_log --pattern '22/Feb/2025:\d\d'
 ```
 
-Output
+### Output format
+
+```text
+<MATCHED TEXT>\t<COUNT>
+```
+
+### Output sample
 
 ```text
 22/Feb/2025:14	10167
