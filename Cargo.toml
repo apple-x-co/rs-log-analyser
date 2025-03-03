@@ -1,8 +1,15 @@
 [package]
 name = "rs-log-analyser"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 
 [dependencies]
 clap = { version = "4.5.31", features = ["derive"] }
 regex = "1.11.1"
+
+[profile.release]
+opt-level = "s"       # サイズと速度のバランスを取る最適化
+lto = "fat"           # 最大限のリンク時最適化を有効化
+codegen-units = 1     # コード生成ユニットを減らし、最適化を強化
+panic = "abort"       # panic 時に 'unwind' ではなく 'abort' を使用
+strip = "symbols"     # シンボル情報を削除し、必要なデバッグ情報は保持
