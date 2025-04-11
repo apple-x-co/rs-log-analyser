@@ -4,7 +4,7 @@
 
 
 ```bash
-rs-log-analyser --file-path access_log --pattern '22/Feb/2025:\d\d'
+rs-log-analyser --input access_log --pattern '22/Feb/2025:\d\d'
 ```
 
 ### Output format

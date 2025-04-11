@@ -1,14 +1,14 @@
 use clap::Parser;
 use regex::Regex;
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufRead};
-use std::collections::HashMap;
 
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
 struct Args {
     #[clap(short, long)]
-    file_path: String,
+    input: String,
 
     #[clap(short, long)]
     pattern: String,
@@ -18,10 +18,10 @@ fn main() -> io::Result<()> {
     let args = Args::parse();
     match Regex::new(&args.pattern) {
         Ok(re) => {
-            let file = File::open(args.file_path)?;
+            let file = File::open(args.input)?;
             let reader = io::BufReader::new(file);
 
-            let mut map:HashMap<String, u32> = HashMap::new();
+            let mut map: HashMap<String, u32> = HashMap::new();
 
             for line in reader.lines() {
                 let line = line?;
